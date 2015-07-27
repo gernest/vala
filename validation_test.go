@@ -167,3 +167,19 @@ func TestStringNotEmpty(t *testing.T) {
 		t.FailNow()
 	}
 }
+
+func TestValidationErrors(t *testing.T) {
+	v := BeginValidation().Validate(
+		StringNotEmpty("", "tmpA"),
+	)
+
+	err := v.Check()
+	if err == nil {
+		t.Errorf("Expected an error.")
+		t.FailNow()
+	}
+
+	if len(v.Errors) != 1 {
+		t.Errorf("expected 1 error got %d", len(v.Errors))
+	}
+}

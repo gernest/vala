@@ -82,7 +82,7 @@ type Validation struct {
 
 // BeginValidation begins a validation check.
 func BeginValidation() *Validation {
-	return nil
+	return &Validation{}
 }
 
 // Check aggregates all checker errors into a single error and returns
